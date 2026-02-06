@@ -20,7 +20,7 @@ st.markdown("""
         font-weight: bold;
     }
     input {
-        color: #FFFFFF !important; /* Виправлено на чорний */
+        color: #D02090 !important; /* Виправлено на чорний */
     }
     ::placeholder {
         color: #4B4B4B !important;
@@ -99,3 +99,4 @@ with col2:
         show_prediction("Наскільки", ["1%", "10%", "50%", "100%", "1000%", "таких чисел тупо не існує"])
     if st.button("Прогноз на когось", disabled=is_disabled):
         show_prediction("Прогноз", ["вмре від чуми", "повезло, буде жити довго", "вай як харашо, не доживе до 26", "все чікібамбоні"])
+
