@@ -20,7 +20,7 @@ st.markdown("""
         font-weight: bold;
     }
     input {
-        color: #000000 !important; /* Виправлено на чорний */
+        color: #FFFFFF !important; /* Виправлено на чорний */
     }
     ::placeholder {
         color: #4B4B4B !important;
@@ -77,13 +77,16 @@ col1, col2 = st.columns(2)
 
 with col1:
     if st.button("Кохання/Дружба", disabled=is_disabled):
-        show_prediction("Про любов", ["кохання", "френдзона", "пішов він нахуй"])
+        show_prediction("Про любов", ["кохання", "френдзона", "пішов він нахуй", "удаліть із друзєй"])
     if st.button("Коли це буде?", disabled=is_disabled):
         show_prediction("Час", ["дууууууже скоро (1-2 дні)", "дуже скоро (1-2 тижні)", "скоро (1-2 місяці)", "ще не визначено", "ну піздєц"])
     if st.button("Порада дня", disabled=is_disabled):
         show_prediction("Порада", ["будь уважним до деталей", "довіряй інтуїції", "зроби паузу і відпочинь"])
     if st.button("Пачіму?", disabled=is_disabled):
         show_prediction("Пачіму", ["бо даун", "бо красавчік"])
+    if st.button("Мій настрій", disabled=is_disabled):
+        show_prediction("Настрій", ["ти тігр", "ти чмо", "ти не вартий і монети", "ти скєбобіще"])
+
 
 with col2:
     if st.button("Так чи Ні?", disabled=is_disabled):
@@ -93,7 +96,6 @@ with col2:
     if st.button("Гроші/Робота", disabled=is_disabled):
         show_prediction("Гроші", ["очікуй прибутку", "краще не ризикуй", "час інвестувати в себе"])
     if st.button("Наскільки?", disabled=is_disabled):
-        show_prediction("Наскільки", ["1", "10", "50", "100", "1000"])
-
-if st.button("Мій настрій", disabled=is_disabled):
-    show_prediction("Настрій", ["ти тигр", "ти сонна булочка", "ти ракета"])
+        show_prediction("Наскільки", ["1%", "10%", "50%", "100%", "1000%", "таких чисел тупо не існує"])
+    if st.button("Прогноз на когось", disabled=is_disabled):
+        show_prediction("Прогноз", ["вмре від чуми", "повезло, буде жити довго", "вай як харашо, не доживе до 26", "все чікібамбоні"])
