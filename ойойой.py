@@ -4,7 +4,7 @@ import random
 # Налаштування сторінки
 st.set_page_config(page_title="SLV")
 
-# Оновлений CSS (без емодзі)
+# Оновлений CSS
 st.markdown("""
     <style>
     .stApp {
@@ -15,23 +15,16 @@ st.markdown("""
         font-family: 'Comic Sans MS', cursive;
         text-align: center;
     }
-    
-    /* ЗМІНА: Колір тексту над полем введення */
     .stTextInput label {
         color: #000000 !important;
         font-weight: bold;
     }
-    
-    /* ЗМІНА: Чорний текст самого введення (те, що ти пишеш) */
     input {
-        color: ##FFFFFF !important;
+        color: #000000 !important; /* Виправлено на чорний */
     }
-    
-    /* Колір підказки (placeholder) */
     ::placeholder {
         color: #4B4B4B !important;
     }
-
     div.stButton > button {
         background-color: #FFC0CB !important;
         color: #5D2E46 !important;
@@ -40,12 +33,12 @@ st.markdown("""
         width: 100% !important;
         font-weight: bold !important;
     }
-    
-    div.stButton > button:hover {
-        background-color: #FFB6C1 !important;
-        border-color: #D02090 !important;
+    /* Колір кнопки, коли вона неактивна */
+    div.stButton > button:disabled {
+        background-color: #E0E0E0 !important;
+        color: #A0A0A0 !important;
+        border-color: #D3D3D3 !important;
     }
-    
     .prediction-box {
         background-color: #FFF0F5;
         padding: 20px;
@@ -66,6 +59,10 @@ st.title("Забий на розвиток, деградуй з Нами!!!")
 # Поле введення
 question = st.text_input("Давай ніщєта, задавай питання:", placeholder="тут")
 
+# ЛОГІКА: Перевіряємо, чи введено питання
+# strip() прибирає пробіли, щоб не можна було просто «натикати» пробілів
+is_disabled = not question.strip()
+
 # Контейнер для результату
 result_container = st.container()
 
@@ -79,24 +76,24 @@ def show_prediction(category, options):
 col1, col2 = st.columns(2)
 
 with col1:
-    if st.button("Кохання/Дружба"):
+    if st.button("Кохання/Дружба", disabled=is_disabled):
         show_prediction("Про любов", ["кохання", "френдзона", "пішов він нахуй"])
-    if st.button("Коли це буде?"):
+    if st.button("Коли це буде?", disabled=is_disabled):
         show_prediction("Час", ["дууууууже скоро (1-2 дні)", "дуже скоро (1-2 тижні)", "скоро (1-2 місяці)", "ще не визначено", "ну піздєц"])
-    if st.button("Порада дня"):
+    if st.button("Порада дня", disabled=is_disabled):
         show_prediction("Порада", ["будь уважним до деталей", "довіряй інтуїції", "зроби паузу і відпочинь"])
-    if st.button("Пачіму?"):
+    if st.button("Пачіму?", disabled=is_disabled):
         show_prediction("Пачіму", ["бо даун", "бо красавчік"])
 
 with col2:
-    if st.button("Так чи Ні?"):
+    if st.button("Так чи Ні?", disabled=is_disabled):
         show_prediction("Відповідь", ["так", "ні"])
-    if st.button("Пророцтво"):
+    if st.button("Пророцтво", disabled=is_disabled):
         show_prediction("Пророцтво", ["те, що шукаєш, шукає тебе", "усе минеться", "відповідь у твоєму серці"])
-    if st.button("Гроші/Робота"):
+    if st.button("Гроші/Робота", disabled=is_disabled):
         show_prediction("Гроші", ["очікуй прибутку", "краще не ризикуй", "час інвестувати в себе"])
-    if st.button("Наскільки?"):
+    if st.button("Наскільки?", disabled=is_disabled):
         show_prediction("Наскільки", ["1", "10", "50", "100", "1000"])
 
-if st.button("Мій настрій"):
+if st.button("Мій настрій", disabled=is_disabled):
     show_prediction("Настрій", ["ти тигр", "ти сонна булочка", "ти ракета"])
